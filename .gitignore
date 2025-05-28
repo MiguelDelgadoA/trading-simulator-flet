@@ -1,5 +1,5 @@
 #My list of ignored files for Python projects
-structor.txt
+trading_simulator.sqlite3
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

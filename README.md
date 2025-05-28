@@ -28,3 +28,45 @@ simulador_trading/
 │
 └── utils/
     └── helpers.py              # Helper functions (conversion, formatting, logs, etc.)
+
+
+
+┌────────────┐
+│   users    │
+├────────────┤
+│ id (PK)    │
+│ username   │
+│ email      │
+│ password   │
+│ created_at │
+└────┬───────┘
+     │
+     │
+     │  ┌────────────────────────────────────────────┐
+     ▼  ▼                                            │
+┌────────────┐              ┌────────────────────┐   │
+│  wallets   │              │      orders        │   │
+├────────────┤              ├────────────────────┤   │
+│ id (PK)    │              │ id (PK)            │   │
+│ user_id ─────────────────►│ user_id (FK)       │   │
+│ crypto_sym──────────────► │ symbol (FK)        │   │
+│ balance    │              │ type               │   │
+└────┬───────┘              │ quantity           │   │
+     │                      │ price              │   │
+     │                      │ status             │   │
+     │                      │ created_at         │   │
+     │                      └────┬───────────────┘   │
+     │                           │                   │
+     │                           ▼                   │
+     │                ┌─────────────────────┐        │
+     │                │   transactions      │        │
+     │                ├─────────────────────┤        │
+     │                │ id (PK)             │        │
+     └───────────────►│ order_id (FK)       │        │
+                      │ exec_price          │        │
+┌────────────┐        │ exec_quantity       │        │
+│  cryptos   │        │ fee                 │        │
+├────────────┤        │ timestamp           │        │
+│ symbol (PK)│        └─────────────────────┘        │
+│ name       │                                       │
+└────────────┘◄──────────────────────────────────────┘

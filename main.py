@@ -2,6 +2,12 @@ import flet as ft
 
 from ws.binance_ws import new_loop_ws
 from config.settings import tickers
+from database.init_db import database_exists
+# Verifica si la base de datos existe, si no, la crea
+if not database_exists():
+    print("Error: No se pudo crear la base de datos.")
+# Si la base de datos existe, continúa con la aplicación
+
 
 
 
